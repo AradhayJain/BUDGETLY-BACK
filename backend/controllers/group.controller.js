@@ -96,3 +96,34 @@ export const addExpense = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
+
+
+
+export const changeGroupBudget = asyncHandler(async (req, res) => {
+  const { group, budget } = req.body;
+
+  if (!group || !group._id || !budget) {
+    res.status(400);
+    throw new Error("Missing group ID or new budget value");
+  }
+
+  const existingGroup = await Chat.findById(group._id);
+
+  if (!existingGroup) {
+    res.status(404);
+    throw new Error("Group not found");
+  }
+
+  // const currentExpenses = existingGroup.Expenses || [];
+  // const totalSpent = currentExpenses.reduce((acc, e) => acc + parseFloat(e.amount || 0), 0);
+
+  // if (parseFloat(budget) < totalSpent) {
+  //   res.status(400);
+  //   throw new Error("Budget cannot be less than current total expenses");
+  // }
+
+  existingGroup.Budget = parseFloat(budget);
+  await existingGroup.save();
+
+  res.status(200).json({ message: "Budget updated successfully", updatedGroup: existingGroup });
+});
