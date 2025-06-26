@@ -3,7 +3,7 @@ import multer from "multer";
 import fs from "fs";
 
 // Create uploads folder if it doesn't exist
-const uploadDir = "uploads/";
+const uploadDir = "backend/uploads/";
 
 // Set storage engine
 const storage = multer.diskStorage({
