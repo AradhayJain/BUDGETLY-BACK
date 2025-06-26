@@ -5,7 +5,7 @@ import googleGenAi from "../utils/Gemini.js";
 import { AIInsights } from "../models/airesponse.model.js";
 
 // @desc    Handle initial setup data from user
-// @route   POST /api/setup
+// @route   POST https://budgetly-back-k8l5.onrender.com/api/setup
 // @access  Private
 export const setupUser = async (req, res) => {
   try {
@@ -60,7 +60,7 @@ export const getSetupData = async (req, res) => {
       return res.status(400).json({ message: "User not found." });
     }
 
-    const { monthlyBudget, incomeSources, PrimarySpendsLimits } = user;
+    const { monthlyBudget, incomeSources, PrimarySpendsLimits , type } = user;
 
     // Calculate totals
     let totalIncome = 0;
@@ -86,7 +86,7 @@ export const getSetupData = async (req, res) => {
     const prompt = `
 You are a professional financial advisor AI assistant.
 
-A college student has the following financial situation:
+A ${type} has the following financial situation:
 {
   "totalIncome": ${totalIncome},
   "balance": ${balance},
