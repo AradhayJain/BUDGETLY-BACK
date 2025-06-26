@@ -5,6 +5,11 @@ import fs from "fs";
 // Create uploads folder if it doesn't exist
 const uploadDir = "backend/uploads/";
 
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+
 // Set storage engine
 const storage = multer.diskStorage({
     destination(req, file, cb) {
