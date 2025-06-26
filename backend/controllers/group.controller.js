@@ -1,4 +1,5 @@
 import { Chat } from "../models/chat.model.js";
+import asyncHandler from "express-async-handler";
 
 
 export const createGroup = async (req, res) => {
