@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   name: String,
   type:{
     type:String,
-    enum:['working professinal','student','user'],
+    enum:['working professional','student','user'],
     default:"student"
   },
   email: { type: String, unique: true },
