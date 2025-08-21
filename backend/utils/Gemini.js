@@ -1,6 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: "AIzaSyA2omopZelLCT_1O-vnJKLxvaWKxoGOI4w" }); // Use environment variable for safety
+const ai = new GoogleGenAI({ apiKey: "AIzaSyDy2dYTvbAcdqkbsO7t-nJCMaLiIYlTdO0" }); // Use environment variable for safety
 
 async function googleGenAi(prompt) {
   const response = await ai.models.generateContent({
